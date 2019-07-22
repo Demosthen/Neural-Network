@@ -11,36 +11,28 @@ using namespace std;
 class Neuron
 {
 public:
-	//vector<vector<double> > subWeight;
-	//vector<vector<double> > &weight;
 	Vector<double> subWeight;
 	double epsilon = 0.00000001;
 	shared_ptr<ppp> bounds;
 	Vector<shared_ptr<double> > weight;
 	double output = 0;
 	double delta;
-	//vector<vector<double> > subGrad;
-	//vector<vector<double> > &gradient;
 	Vector<double> subGrad;
 	Vector<shared_ptr<double> > gradient;
 	double subBGrad=0;
 	double bGradient;
 	pair<int, int> filterSize = { -1,-1 };//x,y
 	int filterDepth=1;
-	//vector<vector<double> > subM1;
-	//vector<vector<double> > &m1;
 	Vector<double> subM1;
-	Vector<shared_ptr<double> > m1;
+	Vector<shared_ptr<double> > m1;// first moment of weights
 	int actFunct = 0;//0none,1sigmoid,2leakyrelu
 	double subBM1;
-	double bm1;
+	double bm1;//first moment of biases
 	double threshold;
-	//vector<vector<double> > subV1;
-	//vector<vector<double> > &v1;
 	Vector<double> subV1;
-	Vector<shared_ptr<double> > v1;
+	Vector<shared_ptr<double> > v1;//second moment of weights
 	double subBV1 = 0;
-	double bv1;
+	double bv1;//second moment of biases
 	double subBias=0;
 	shared_ptr<double> bias;
 	Vector<double> mInputs;
