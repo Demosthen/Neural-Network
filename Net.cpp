@@ -139,7 +139,6 @@ double Net::eval(vector<Vector<double> > &inputs,vector<vector<double> > &targs,
 			++cnt;
 		}
 	}
-	//cout << targs.size() << endl;
 	return cnt / targs.size();
 }
 void Net::printLayers() {
