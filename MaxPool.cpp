@@ -33,16 +33,13 @@ void MaxPool::feedForward(Vector<shared_ptr<Neuron> > &input, double dropOut, bo
 					for (int g = 0; g < field; g++) {
 						if (Helper::checkBounds(shared_ptr<ppp>(new ppp( 0,{0,{input.x,input.y}} )), { u + i,g + j }) && maxVal < input(i + u, j + g, a)->output) {
 							maxVal = input(i + u, j + g, a)->output;
-							//cout << maxVal <<" "<<i+arr1[u]<<" "<<j<<" "<<arr2[g]<< endl;
 							coord.first = u;
-							//cout << arr1[u]+i<<" "<<arr2[g]+j << endl;
 							coord.second = g;
 						}
 					}
 				}
 
 				neurons(i / field, j / field, a)->output = maxVal;
-				//cout << coord.first << " " << coord.second << endl;
 				locs(i / field, j / field, a) = { i+coord.first,{j+coord.second,a} };
 			}
 
