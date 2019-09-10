@@ -2,13 +2,12 @@
 #include "stdafx.h"
 #include <vector>
 #pragma once
-using namespace std;
 template <class type>
 class Vector
 {
 public:
 
-	vector<type> data;
+	std::vector<type> data;
 	int x = 0;
 	int y = 0;
 	int z = 0;
