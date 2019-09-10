@@ -25,13 +25,11 @@ ConvLayer::ConvLayer(pair<int, int>& dims, int rField, int stepSize, int mactFun
 	neurons.y = height;
 	neurons.z = numKernels;
 	bounds = shared_ptr<ppp>(new ppp(0, { 0,{imgDims.first,imgDims.second} }));
-	//cout << "vec "<<neurons.size()<< endl;
 	for (int a = 0; a < numKernels; a++) {
 		for (int i = 0; i < width; i++) {
 			for (int j = 0; j < height; j++) {
 				if (i == 0 && j == 0) {
 					neurons.assign(i, j, a, shared_ptr<Neuron>(new Neuron(actFunct, make_pair(rField, rField), { i*stride,{ j*stride,{ 0,a } } },depth,bounds)));
-					
 				}
 				else if(Helper::checkBounds(bounds,{i*stride,j*stride})){
 					neurons.assign(i, j, a, shared_ptr<Neuron>(new Neuron(neurons(0, 0, a), { i*stride,{ j*stride,{ 0,a } } },bounds)));
@@ -39,7 +37,6 @@ ConvLayer::ConvLayer(pair<int, int>& dims, int rField, int stepSize, int mactFun
 			}
 		}
 	}
-	cout << "";
 }
 ConvLayer::ConvLayer(pair<int, int>& dims, int rField, int stepSize, int mactFunct, bool Pool, int mnumKernels, shared_ptr<ppp>& x, int depth)
 :ConvLayer(dims,rField,stepSize,mactFunct, Pool,mnumKernels, depth){
@@ -57,16 +54,12 @@ void ConvLayer::maxPool() {// 2*2
 						for (int g = 0; g < sizeof(arr2)/sizeof(*arr2); g++) {
 							if (Helper::checkBounds(bounds, { arr1[u] + i,arr2[g] + j })&&maxVal < neurons(i + arr1[u], j + arr2[g], a)->output) {
 								maxVal = neurons(i + arr1[u], j + arr2[g],a)->output;
-								//cout << maxVal <<" "<<i+arr1[u]<<" "<<j<<" "<<arr2[g]<< endl;
 								coord.first = u;
-								//cout << arr1[u]+i<<" "<<arr2[g]+j << endl;
 								coord.second = g;
 							}
 						}
 					}
-					//cout << coord.first<<" "<<coord.second << endl;
 					toSave[neurons.getIndex(i+arr1[coord.first], j+arr2[coord.second], a)]=true;
-
 			}
 
 		}
@@ -96,7 +89,6 @@ void ConvLayer::backProp(Vector<shared_ptr<Neuron>> &prevLayer, Vector<shared_pt
 					prevLayer(neurons(i)->loc(j).first, neurons(i)->loc(j).second.first, neurons(i)->loc(j).second.second)->delta+=neurons(i)->delta;
 				}
 			}
-
 			neurons(i)->delta = 0;
 	}
 }
