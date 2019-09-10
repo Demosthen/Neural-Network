@@ -33,12 +33,9 @@ bool OutLayer::eval( double margin) {
 			targ = i;
 		}
 	}
-	//cout << targ << " " << maxIndex <<" "<<maxOut<< endl;
 	return maxIndex == targ;
-	//return true;
 }
 void OutLayer::backProp(Vector<shared_ptr<Neuron> > &prevLayer, Vector<shared_ptr<Neuron> >&nextLayer) {
-	//double tempSum = 0;
 	
 	for (int i = 0; i < neurons.size(); i++) {
 		neurons(i)->delta = neurons(i)->errPrime(targets[i])*neurons(i)->actDeriv();
@@ -50,7 +47,6 @@ void OutLayer::backProp(Vector<shared_ptr<Neuron> > &prevLayer, Vector<shared_pt
 		}
 
 	}
-	//return tempSum;
 }
 double inline OutLayer::totalError() {
 	double err = 0;
