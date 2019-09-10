@@ -40,22 +40,6 @@ Neuron::Neuron(int numPrev, int mactFunct, pair<int, pair<int, pair<int,int> > >
 		loc.z = filterDepth;
 	}
 }
-/*Neuron::Neuron(vector<vector<double> >& w, double &b, vector<vector<double> > &grad, double &bGrad, vector<vector<double> > &M1,
-	vector<vector<double> > &V1, double &bM1, double &bV1, int mactFunct, pair<int, int> Pos = { -1,-1 }) :weight(w), bias(b), gradient(grad), bGradient(bGrad), m1(M1), v1(V1), bm1(bM1), bv1(bV1)
-{
-
-	actFunct = mactFunct;
-	pos = Pos;
-	/*weight = w;
-	bias = b;
-	bGradient = 0;
-	gradient.resize(w.size());
-	for (int i = 0; i < gradient.size(); i++) {
-		gradient[i][0] = 0;
-	}
-	m1.resize(w.size());
-	v1.resize(w.size());
-}*/
 Neuron::Neuron(Vector<shared_ptr<double> >& w, double & b, Vector<shared_ptr<double> >& grad, double & bGrad, Vector<shared_ptr<double> >& M1, 
 	Vector<shared_ptr<double> >& V1, double bM1, double bV1, int mactFunct, pair<int, pair<int, pair<int,int> > >Pos) 
 	:weight(w), gradient(grad), bGradient(bGrad), m1(M1), v1(V1), bm1(bM1), bv1(bV1)
