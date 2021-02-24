@@ -1,6 +1,5 @@
 # Neural-Network
-
-My first successful attempt at implementing feedforward and convolutional neural networks. Computation of gradients between two convolutional layers not implemented; one convolutional layer was sufficient for the task I used this for
+Convolutional neural network library that implements convolutional layers, max pooling, linear layers, ReLU and sigmoid activation functions, ADAM, momentum, and SGD optimizers.
 
 Possible Optimizations:
 GPU matrix operations, multithreading, or other form of parallelization
